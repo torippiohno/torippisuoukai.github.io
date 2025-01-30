@@ -1,25 +1,77 @@
+{
+    margin: 0;
+    padding: 0;
+}
+
+.snow-container {
+    width: 100%;
+    height: 100vh;
+    
+    background-color: black;
+    position: relative;
+    overflow: hidden;
+}
+
+    color: snow;
+    font-size: 4.8em;
+    text-shadow: 2px 3px 7px;
+
+    /* snow-containerに対して位置を指定するために */
+    position: absolute;
+
+    /* ど真ん中に位置させる */
+    top: 50vh;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* 雪のスタイル */
 .snow {
-  color: white; /* または #ffffff, rgb(255, 255, 255) */
-  font-size: 10px;
-  position: fixed;
-  top: -5%;
-  text-shadow: /* 値を調整 */
-    2px -2px 1px rgba(0, 0, 0, 0.2),
-    4px -4px 1px rgba(0, 0, 0, 0.2),
-    6px -6px 1px rgba(0, 0, 0, 0.2);
-  animation: roll 5s linear infinite;
+    /* 背景色（雪だから、そりゃ、snow です。※redやってみても面白いですｗ） */
+    background-color: snow;
+
+    /* 雪、つまりまるなので、要素の角をまるくします。 */
+    border-radius: 50%;
+
+    /* 位置をsnow-containerの中に相対的に指定できるように */
+    position: absolute;
+
+    /*
+    雪は降らなきゃいけない（つまり、落ちるようにページ上を移動しなくてはいけないので）アニメーションを指定します。
+    animation: アニメーション名 アニメーション時間 動き方
+    （linearは「直線的に」て感じです。詳しくはhttps://developer.mozilla.org/ja/docs/Web/CSS/animation-timing-function）
+    ※アニメーションはこの次、作成します。
+    */
+    animation: snowFall 10s linear;
 }
 
-.snow2nd {
-  animation: anim 8s linear infinite;
-}
-
-@keyframes roll {
-  0% { transform: rotate(0deg); }
-  90% { opacity: 1; }
-  100% { transform: rotate(20deg); top: 100%; opacity: 0; }
-}
-
-@keyframes anim {
-  100% { color: transparent; top: 110%; } /* 値を調整 */
+/* 雪のアニメーションの作成 */
+@keyframes snowFall {
+    /* 初め */
+    0% {
+        opacity: 0; /* 不透明度を0に（つまり、なんも見えませんね） */
+        top: 0; /* ページのいっちゃん上に配置します。 */
+    }
+    10% {
+        opacity: 1; /* 見えるようにします。 */
+        transform: translateX(5px); /* これは、横にちょっと動かすようにして、雪がふらふら落ちるようにしています。なくてもいいです */
+    }
+    30% {
+        transform: translateX(-5px);
+    }
+    50% {
+        transform: translateX(5px);
+    }
+    70% {
+        transform: translateX(-5px);
+    }
+    90% {
+        opacity: 1; /* この時もまだ見える状態でなくてはいけないので、この様に書いておきます */
+        transform: translateX(-5px);
+    }
+    100% {
+        /* 見えなくして、ページのいっちゃん下に位置するようにします */
+        opacity: 0;
+        top: 100vh;
+    }
 }
