@@ -3,15 +3,36 @@
     padding: 0;
 }
 
+/*
+雪を降らせる場所のスタイル
+*/
+
 .snow-container {
+    /*サイズをページ全体に */
     width: 100%;
     height: 100vh;
     
+    /* 背景色を黒に指定 */
     background-color: black;
+    
     position: relative;
+    /*
+    これにより、この要素を基準にして、このなかの要素の相対位置を指定できます。
+    詳しく知りたい方は、
+    https://zero-plus.io/media/css-position-relative/
+    などを見てみてください。
+    */
+
+    /*
+    はみ出す要素があるので、それを隠せるよう設定します。
+    設定しなかったらページが、がぐがぐになります。（試すのならJavaScriptも書いてから試してみてください。）
+    */
     overflow: hidden;
 }
 
+/* タイトルのスタイル */
+.title {
+    /* 色、フォントサイズ、影、の設定 */
     color: snow;
     font-size: 4.8em;
     text-shadow: 2px 3px 7px;
