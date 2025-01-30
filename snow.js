@@ -1,1 +1,21 @@
-function _0x2b2a(_0x29fb02,_0x3575f8){const _0x3ca166=_0x3ca1();return _0x2b2a=function(_0x2b2ac2,_0x38ef68){_0x2b2ac2=_0x2b2ac2-0xad;let _0x16bd8a=_0x3ca166[_0x2b2ac2];return _0x16bd8a;},_0x2b2a(_0x29fb02,_0x3575f8);}function _0x3ca1(){const _0x500a6c=['querySelector','5DPIWUR','3924364uVECrN','snow','classList','3591984IYzqBj','1423611SIIqMi','style','3175624pCYqVH','420QFBkar','9zTsewp','add','appendChild','1333899TCqywr','left','createElement','remove','518oTeATF','width','906323gfMusm','3387YZvbwX','random'];_0x3ca1=function(){return _0x500a6c;};return _0x3ca1();}(function(_0x1703b9,_0x3cd70b){const _0x3a750e=_0x2b2a,_0x531093=_0x1703b9();while(!![]){try{const _0x4cff7=-parseInt(_0x3a750e(0xb0))/0x1+-parseInt(_0x3a750e(0xb4))/0x2*(parseInt(_0x3a750e(0xb7))/0x3)+-parseInt(_0x3a750e(0xbb))/0x4*(parseInt(_0x3a750e(0xba))/0x5)+-parseInt(_0x3a750e(0xbe))/0x6+parseInt(_0x3a750e(0xbf))/0x7+parseInt(_0x3a750e(0xc1))/0x8*(parseInt(_0x3a750e(0xad))/0x9)+-parseInt(_0x3a750e(0xc2))/0xa*(-parseInt(_0x3a750e(0xb6))/0xb);if(_0x4cff7===_0x3cd70b)break;else _0x531093['push'](_0x531093['shift']());}catch(_0x4e1535){_0x531093['push'](_0x531093['shift']());}}}(_0x3ca1,0xd0aef),setInterval(()=>{const _0x55bc25=_0x2b2a,_0x144a4f=document[_0x55bc25(0xb2)]('span');_0x144a4f[_0x55bc25(0xbd)][_0x55bc25(0xae)](_0x55bc25(0xbc)),_0x144a4f[_0x55bc25(0xc0)][_0x55bc25(0xb5)]=_0x144a4f[_0x55bc25(0xc0)]['height']=Math[_0x55bc25(0xb8)]()*0x8+'px',_0x144a4f[_0x55bc25(0xc0)][_0x55bc25(0xb1)]=Math[_0x55bc25(0xb8)]()*0x64+'%',document[_0x55bc25(0xb9)]('.snow-container')[_0x55bc25(0xaf)](_0x144a4f),setTimeout(()=>{const _0x194b3a=_0x55bc25;_0x144a4f[_0x194b3a(0xb3)]();},0x2710);},0x64));
+// 定期的（今回は100ミリ秒間で）に雪を降らせるよう、setInterver関数を使用します
+setInterval(() => {
+    // 雪を作成します（span要素を作成し、それのクラスにsnowをあてています）
+    const snow = document.createElement('span');
+    snow.classList.add('snow');
+
+    // snowのスタイル（サイズとページ上の左端からの位置）を指定
+    snow.style.width = snow.style.height = Math.random() * 8 + 'px'; // これにより、幅、高さが、～８（正確には８は含まれない）でランダムに指定できます
+    snow.style.left = Math.random() * 100 + '%'; // 雪がページの左端からのどのくらいの距離で位置するようにするかえをランダムで指定
+
+    // snow-containerにsnowを子要素として入れてやる
+    // document.querySelector()するとき、クラスでやるときは、クラス名の前にピリオドが必要です。注意。
+    document.querySelector('.snow-container').appendChild(snow);
+
+    // アニメーションの時間が10秒なので、その時間がたったら削除されるようにします
+
+    setTimeout(() => {
+        // snowを削除します
+        snow.remove();
+    }, 10000 /*ミリ秒指定なので、これで10秒です */);
+}, 100 /* 何秒ごとにやるか指定してます*/);
